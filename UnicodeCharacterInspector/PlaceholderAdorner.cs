@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+using System;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -31,7 +27,7 @@ namespace UnicodeCharacterInspector
 			{
 				var control = ((Control)AdornedElement);
 
-				Rect adornedElementRect = new Rect(AdornedElement.RenderSize);
+				var adornedElementRect = new Rect(AdornedElement.RenderSize);
 				drawingContext.DrawText
 				(
 					new FormattedText
@@ -48,7 +44,8 @@ namespace UnicodeCharacterInspector
 							SystemFonts.MessageFontFamily
 						),
 						control.FontSize,
-						SystemColors.GrayTextBrush
+						SystemColors.GrayTextBrush,
+						VisualTreeHelper.GetDpi(this).PixelsPerDip
 					),
 					// The offsets where experimentally determined on a Windows 8.1 machine. I'm willing to accept anything better. 😉
 					new Point(control.BorderThickness.Left + control.Padding.Left + 5, control.BorderThickness.Top + control.Padding.Top + 3)
